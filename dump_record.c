@@ -192,8 +192,23 @@ int main(int argc, char **argv) {
 				print_record(string);
 				printf("\n");
 				break;
+			case 300: // physical description
+				printf("Physical description: ");
+				print_record(string);
+				printf("\n");
+				break;
+			case 520: // summary
+				printf("Summary: ");
+				print_record(string);
+				printf("\n");
+				break;
+			case 650: // topic
+				printf("Topic: ");
+				print_record(string);
+				printf("\n");
+				break;
 
-			default: printf("***UNKNOWN TAG %d\n",tag);
+			default: fprintf(stderr,"***UNKNOWN TAG %d\n",tag);
 		}
 
 
