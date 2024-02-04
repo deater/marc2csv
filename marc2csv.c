@@ -169,29 +169,6 @@ int main(int argc, char **argv) {
 	length+=(record[3]-'0')*10;
 	length+=(record[4]-'0')*1;
 
-#if 0
-	printf("\tRecord Length: %d bytes\n",length);
-
-	/* a=increase, c=corrected, d=deleted, n=nde, p=increase */
-	printf("\tRecord status: %c\n",record[5]);
-
-
-	printf("\tType of record: %c\n",record[6]);
-
-	printf("\tBibliographic level: %c\n",record[7]);
-
-	printf("\tType of control: %c\n",record[8]);
-
-	printf("\tCharacter Coding: %c\n",record[9]);
-
-	printf("\tIndicator count: %c\n",record[10]);
-
-	printf("\tSubfield code count: %c\n",record[11]);
-
-	printf("\tBase address of data: %c%c%c%c%c\n",
-		record[12],record[13],record[14],record[15],record[16]);
-#endif
-
 	base_address=0;
 	base_address+=(record[12]-'0')*10000;
 	base_address+=(record[13]-'0')*1000;
@@ -199,27 +176,11 @@ int main(int argc, char **argv) {
 	base_address+=(record[15]-'0')*10;
 	base_address+=(record[16]-'0')*1;
 
-#if 0
-	printf("\tEncoding Level: %c\n",record[17]);
+	/* List of tags to output */
 
-	printf("\tDescriptive catalog form: %c\n",record[18]);
-
-	printf("\tMultipart resource record level: %c\n",record[19]);
-
-	/* always 4 */
-	printf("\tLength of length-of-field: %c\n",record[20]);
-
-	/* always 5 */
-	printf("\tLength of starting char position: %c\n",record[21]);
-
-	printf("\tLength of implementation-defined: %c\n",record[22]);
-
-	printf("\tUndefined: %c\n",record[23]);
-#endif
-
-	print_string(1);		// control number
-//	print_string(3);		// control number id
-	print_string(5);		// date/time
+	print_record(1);		// control number
+//	print_record(3);		// control number id
+	print_record(5);		// date/time
 	print_record(20);		// ISBN
 	print_record(100);		// author
 	print_record(245);		// title statement
@@ -231,6 +192,8 @@ int main(int argc, char **argv) {
 	print_record(300);		// physical description
 	print_record(520);		// summary
 	print_record(650);		// topic
+	print_record(50);		// LoC Call Number
+	print_record(82);		// Dewey Decimal
 
 	printf("\n");
 	return 0;

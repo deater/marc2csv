@@ -15,6 +15,8 @@ int main(int argc, char **argv) {
 	printf("\"Physical Description\",");	// 300
 	printf("\"Summary\",");			// 520
 	printf("\"Topic\",");			// 650
+	printf("\"LOC Call\",");		// 50
+	printf("\"Dewey Decimal\",");		// 82
 	printf("\n");
 	return 0;
 }
