@@ -1,0 +1,30 @@
+	marc2csv
+	~~~~~~~~
+
+version 1.0
+
+by Vince Weaver	<vince@deater.net>
+
+Usage:
+	./marc2csv < 000001.marc
+
+
+This tool will take a MARC formatted book entry and convert it
+to a line of CSV suitable for importing into a spreadsheet.
+
+This was something quickly thrown together, you probably don't
+want to use it in production
+
+
+Backstory
+~~~~~~~~~
+
+My family has 5000+ books and we had catloged them into the
+EMILDA library software.  However Emilda isn't really supported anymore
+and so we lost access to the database.  And it is shockingly hard
+to find a good, free, library software.  Especially one where you can
+just import an existing set of MARC records.
+
+In any case finally we gave up and I wrote this tool to dump everything
+to a spreadsheet, which is certainly the wrong way to do things but
+it's certainly better than nothing.
