@@ -1,0 +1,46 @@
+Putting this here even though vaguely unrelated.
+
+Saving the MARC records got us a list of books, but didn't include
+books deleted from the library.  Emilda stored that in mysql.
+
+The problem is we had an old version of debian running with the mysql
+database, and that machine crashed.  While we had a backup of the directory
+with the mysql data it was too old for a recent debian to read.
+
+To rescue this data had to do the following:
+
++ install mysql
++ setup password
++ "create database emilda;"
++ re-create the tables.
+
+	Tried to rebuild using "mysqlfrm" tool that was a pain to install
+	and the resulting values didn't seem to work.
+
+	There is an "emilda.sql" that came with it
+	that originally set it up, but the format no longer works.
+	The main things to change are
+		TYPE=MyISAM;
+	is now
+		ENGINE=MyISAM;
+	Also default data of 0000-00-00 doesn't work anymore, changed it
+	to 1970-00-00
+
+	Weird errors about the KEY length that in the end I just gave up.
+
+	Made sure to re-create the deleted_books table, just without
+	the key lines
+
+	Then rescue things:
+		copy over the MYD and MYI files from before
+
+		REPAIR TABLE deleted_books
+
+	this wasn't enough?
+
+	Need to repair the index:
+		REPAIR TABLE deleted_books USE_FRM;		
+
+	Finally:
+		mysql -p emilda -e "SELECT * FROM deleted_books;" > out.txt
+
